@@ -5,12 +5,22 @@ const { v4: uuid } = require("uuid");
 
 require('dotenv').config();
 
+/**
+ * user data validation
+ */
 const userSchema = Joi.object().keys({
   email: Joi.string().email({ minDomainSegments: 2 }),
   password: Joi.string().required().min(4),
   confirmPassword: Joi.string().valid(Joi.ref("password")).required(),
 })
 
+/**
+ * method to facilitate sign up process
+ * 
+ * @param {*} req api request
+ * @param {*} res api response
+ * @returns 
+ */
 export const signUp = async (req, res) => {
   try {
     console.log('started processing sign up request....')
@@ -47,7 +57,6 @@ export const signUp = async (req, res) => {
       success: true,
       message: 'Registration success'
     })
-
   } catch (error) {
     console.log('Handle errors: ', error)
     return res.json({

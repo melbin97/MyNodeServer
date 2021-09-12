@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+/**
+ * User Entity
+ */
 const userScheme = new Schema(
   {
     id: { type: String, unique: true, required: true },
