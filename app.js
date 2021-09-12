@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(restrictOrigin);
 app.use(morgan('dev'));
 
-//apis
+//APIs
 app.get('/ping', (req, res) => {
   return res.send({
     status: 'healthy'
