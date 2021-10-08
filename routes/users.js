@@ -1,5 +1,9 @@
 import { Router } from "express";
 import { cleanbody } from "../middlewares/cleanbody";
-import { signUp } from  '../src/users/user.controller';
+import { activate, login, resendOTP, signUp } from  '../src/users/user.controller';
 
-export const router = Router().post('/signup', cleanbody, signUp)
+export const router = Router()
+router.post('/signup', cleanbody, signUp)
+router.post('/activate', cleanbody, activate)
+router.post('/resend-otp', cleanbody, resendOTP)
+router.get('/login', cleanbody, login)
